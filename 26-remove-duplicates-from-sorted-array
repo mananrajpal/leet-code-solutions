@@ -1,0 +1,21 @@
+from typing import List
+
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        """
+        Since the solution demands using the same Array as given and solving it in a Space Complexity of O(1), we will use 
+        the pointer method to solve this problem.
+        Take two pointers left,right both starting from index 1 because number at index 0 will always be unique.
+        Iterate right pointer from index 1 to the last index of the array such that if the number at 
+        array[right_pointer] is different from the previous number arrary[right_pointer - 1] , 
+        set the element at current right_pointer index to the 
+        left_pointer index array[left_pointer] = array[right_pointer] and increment left_pointer index by 1, 
+        otherwise keep on iterating till the last index of the Array is reached.
+        In the end return left_pointer which will be the last unique element from the given array.
+        """
+        left_pointer = 1
+        for right_pointer in range(1, len(nums)):
+            if nums[right_pointer - 1] != nums[right_pointer]:
+                nums[left_pointer] = nums[right_pointer]
+                left_pointer += 1
+        return left_pointer

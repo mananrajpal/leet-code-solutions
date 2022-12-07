@@ -1,0 +1,19 @@
+from typing import List
+
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        """
+        Since the problem requires us to solve the question in a space complexity of O(1), we cant use two arrays.
+        To solve this problem we will use the pointer method specifically two pointers. One pointer stays at the index for the value to be set and 
+        increments once the previous value has been set, the other pointer iterates over the length of entire array find each suitable value and 
+        once the suitable value is found, it is set to the index which left_pointer is at and the left_pointer is incremented to the next index.
+        """
+        left_pointer = 0
+        for right_pointer in range(0, len(nums)):
+            # Check if value at right pointer matches the value required to be remove
+            if nums[right_pointer] != val:
+                # Overwrite the nums array at index left_pointer
+                nums[left_pointer] = nums[right_pointer]
+                # Increment the left_pointer by 1
+                left_pointer += 1
+        return left_pointer
